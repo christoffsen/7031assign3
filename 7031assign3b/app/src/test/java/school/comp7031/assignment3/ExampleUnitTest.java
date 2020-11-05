@@ -1,4 +1,4 @@
-package school.comp7031.assignment1;
+package school.comp7031.assignment3;
 
 import org.junit.Test;
 
