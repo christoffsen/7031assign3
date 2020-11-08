@@ -17,6 +17,8 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.GestureDetector;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 
 import android.os.CountDownTimer;
@@ -24,6 +26,8 @@ import android.os.CountDownTimer;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
+
+import javax.xml.datatype.Duration;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureOverlayView.OnGesturePerformedListener, SensorEventListener {
     private int index = 0;
@@ -139,6 +143,10 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void goRight(View view) {
+        Animation animation2 = AnimationUtils.makeInAnimation(this, false);
+        animation2.setDuration(500);
+        ImageView image = findViewById(R.id.imageView);
+        image.startAnimation(animation2);
         index += 1;
         if(index >= imgList.size()) {
             index = 0;
@@ -147,6 +155,9 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     }
 
     public void goLeft(View view) {
+        Animation animation = AnimationUtils.loadAnimation(this, R.anim.slideleft);
+        ImageView image = findViewById(R.id.imageView);
+        image.startAnimation(animation);
         index -= 1;
         if(index < 0){
             index = imgList.size() - 1;

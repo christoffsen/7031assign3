@@ -1,7 +1,5 @@
 package school.comp7031.assignment3;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -17,6 +15,7 @@ import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.GestureDetector;
+import android.view.ViewGroup;
 import android.widget.ImageView;
 
 import android.os.CountDownTimer;
@@ -26,7 +25,7 @@ import java.util.Collections;
 import java.util.LinkedList;
 
 
-public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureOverlayView.OnGesturePerformedListener, SensorEventListener {
+public class MainActivity extends DrawerActivity implements GestureDetector.OnGestureListener, GestureOverlayView.OnGesturePerformedListener, SensorEventListener {
     private int index = 0;
     private int gestureThreshold = 5;
     private int samplingPeriod = 100000;
@@ -41,10 +40,13 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private Sensor sensor;
     private LinkedList<Integer> imgList = new LinkedList<Integer>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        this.doSetup();
+
+        getLayoutInflater().inflate(R.layout.activity_main, this.contentPanel);
 
         gestures = new GestureDetector(getBaseContext(), this);
         Collections.addAll(imgList, R.drawable.dog, R.drawable.cat, R.drawable.ferret, R.drawable.parakeet);
