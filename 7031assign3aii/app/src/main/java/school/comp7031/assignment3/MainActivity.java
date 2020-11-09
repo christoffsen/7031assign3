@@ -1,7 +1,7 @@
-package school.comp7031.assignment1;
+package school.comp7031.assignment3;
 
-import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -9,33 +9,27 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.speech.SpeechRecognizer;
 import android.os.Bundle;
 import android.gesture.*;
 
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.Surface;
 import android.view.View;
 import android.view.GestureDetector;
 import android.widget.ImageView;
 
 import android.os.CountDownTimer;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import java.util.PropertyResourceBundle;
-
-public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureOverlayView.OnGesturePerformedListener, SensorEventListener {
+public class MainActivity extends Activity implements GestureDetector.OnGestureListener, GestureOverlayView.OnGesturePerformedListener, SensorEventListener {
     private int index = 0;
     private int gestureThreshold = 5;
     private int samplingPeriod = 100000;
     private boolean canTilt = false;
-    private double lastTiltTime = 0;
     private float zRef = Float.MIN_VALUE;
 
     private CountDownTimer timer;
@@ -43,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
     private GestureLibrary customGestures;
     private SensorManager sensorManager;
     private Sensor sensor;
-    private LinkedList<Integer> imgList = new LinkedList<Integer>();
+    private LinkedList<Integer> imgList = new LinkedList<>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
