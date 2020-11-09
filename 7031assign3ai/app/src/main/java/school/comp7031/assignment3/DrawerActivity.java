@@ -55,6 +55,9 @@ public class DrawerActivity extends AppCompatActivity implements NavigationView.
             case R.id.activity_search:
                 activityClass = SearchActivity.class;
                 break;
+            case R.id.activity_settings:
+                activityClass = SettingsActivity.class;
+                break;
             default:
                 activityClass = MainActivity.class;
         }

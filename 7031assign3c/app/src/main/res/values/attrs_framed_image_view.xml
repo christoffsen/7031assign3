@@ -1,0 +1,6 @@
+<resources>
+    <declare-styleable name="FramedImageView">
+        <attr name="borderColor" format="color" />
+        <attr name="borderWidth" format="integer" />
+    </declare-styleable>
+</resources>

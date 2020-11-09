@@ -1,4 +1,4 @@
-package school.comp7031.assignment1;
+package school.comp7031.assignment3;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,26 +9,22 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
-import android.speech.SpeechRecognizer;
 import android.os.Bundle;
 import android.gesture.*;
 
 import android.speech.RecognizerIntent;
 import android.util.Log;
 import android.view.MotionEvent;
-import android.view.Surface;
 import android.view.View;
 import android.view.GestureDetector;
 import android.widget.ImageView;
 
 import android.os.CountDownTimer;
-import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.LinkedList;
 
-import java.util.PropertyResourceBundle;
 
 public class MainActivity extends AppCompatActivity implements GestureDetector.OnGestureListener, GestureOverlayView.OnGesturePerformedListener, SensorEventListener {
     private int index = 0;
@@ -140,7 +136,7 @@ public class MainActivity extends AppCompatActivity implements GestureDetector.O
 
     void updateImageToIndex() {
         View f = findViewById(R.id.imageView);
-        ((ImageView)findViewById(R.id.imageView)).setImageResource(imgList.get(index));
+        ((FramedImageView)findViewById(R.id.imageView)).setImage(imgList.get(index));
     }
 
     public void goRight(View view) {

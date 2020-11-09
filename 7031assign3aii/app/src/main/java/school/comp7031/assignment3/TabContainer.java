@@ -28,10 +28,6 @@ public class TabContainer extends TabActivity {
         tabHost.addTab(videoTabSpec);
         tabHost.addTab(audioTabSpec);
 
-        //tabHost.addTab(tabHost.newTabSpec("main").setIndicator("Main").setContent(new Intent(this, MainActivity.class)));
-        //tabHost.addTab(tabHost.newTabSpec("camera").setIndicator("Camera").setContent(new Intent(this, CameraActivity.class)));
-        //tabHost.addTab(tabHost.newTabSpec("gallery").setIndicator("Gallery").setContent(new Intent(this, GalleryActivity.class)));
-
         tabHost.setCurrentTab(0);
     }
 }
