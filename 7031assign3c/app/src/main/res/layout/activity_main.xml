@@ -24,7 +24,7 @@
         android:layout_height="400dp"
         android:layout_marginStart="16dp"
         android:visibility="visible"
-        custom:borderWidth="5"
+        custom:borderWidth="15"
         custom:borderColor="#00AAFF"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/gestureView" />

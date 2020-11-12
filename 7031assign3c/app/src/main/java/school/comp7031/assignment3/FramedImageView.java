@@ -16,6 +16,8 @@ public class FramedImageView extends View {
     private int borderWidth = 5;
     private Bitmap image;
     private Bitmap scaledImage;
+    private int width;
+    private int height;
 
     private TextPaint mTextPaint;
 
@@ -27,10 +29,12 @@ public class FramedImageView extends View {
     public FramedImageView(Context context, AttributeSet attrs) {
         super(context, attrs);
 
-        TypedArray a = context.obtainStyledAttributes(attrs, R.styleable.FramedImageView, 0, 0);
-        
-        borderColor = Color.parseColor(a.getString(R.styleable.FramedImageView_borderColor));
-        borderWidth = Integer.parseInt(a.getString(R.styleable.FramedImageView_borderWidth));
+        TypedArray customAttrs = context.obtainStyledAttributes(attrs, R.styleable.FramedImageView, 0, 0);
+        TypedArray androidAttrs = context.obtainStyledAttributes(attrs, R.styleable.View, 0, 0);
+
+        borderColor = Color.parseColor(customAttrs.getString(R.styleable.FramedImageView_borderColor));
+        borderWidth = Integer.parseInt(customAttrs.getString(R.styleable.FramedImageView_borderWidth));
+
 
         init(attrs, 0);
     }
@@ -46,8 +50,8 @@ public class FramedImageView extends View {
     }
 
     private void setScaleAndInvalidate() {
-        int width = (getRight() - getLeft()) - (2 * borderWidth);
-        int height = (getBottom() - getTop()) - (2 * borderWidth);
+        //int width = (getRight() - getLeft()) - (2 * borderWidth);
+        //int height = (getBottom() - getTop()) - (2 * borderWidth);
         if(width < 0) {
             width = image.getWidth() - (2 * borderWidth);
         }
@@ -55,7 +59,7 @@ public class FramedImageView extends View {
             height = image.getHeight() - (2 * borderWidth);
         }
 
-        scaledImage = Bitmap.createScaledBitmap(image, width, height, false);
+        scaledImage = Bitmap.createScaledBitmap(image, width - (2 * borderWidth), height - (2 * borderWidth), false);
         this.invalidate();
     }
 
@@ -70,6 +74,14 @@ public class FramedImageView extends View {
 
         canvas.drawBitmap(scaledImage, borderWidth, borderWidth, null);
 
+    }
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        this.width = w;
+        this.height = h;
+        setScaleAndInvalidate();
     }
 
     public void setImage(Bitmap newImage){
